@@ -1,0 +1,51 @@
+<template name="filmList"> 
+  <scroll-view class="filmWrap">
+    <block wx:for="{{films}}" wx:for-index="filmIndex" wx:for-item="filmItem" >
+      <view class="film-item" data-id="{{filmItem.id}}" data-sign="{{filmItem['3d']}}" bindtap="viewFilmDetail"> 
+          <view class="film-left">
+            <image class="film-img" src="{{filmItem.img}}"></image>
+            <!-- <navigator url="/pages/filmVideo/filmVideo">
+               <image class="film-play-icon" src="/images/play_icon.png"></image>
+            </navigator> -->
+            <image class="film-play-icon" src="/images/play_icon.png" catchtap="viewFilmVideo"></image>
+          </view>
+          <!-- 中间部分 -->
+          <view class="film-info">
+            <view class="film-title">
+              <text class="film-name">{{filmItem.nm}}</text>
+              <view class="film-sign">
+                <text class="film-sign-3d" wx:if='{{filmItem["3d"] && filmItem.imax}}'>3D</text>
+                <text class="film-sign-3d film-sign-3d-only" wx:elif='{{filmItem["3d"] && !filmItem.imax}}'>3D</text>
+                <text wx:else style="padding:0;border:none"></text>
+                <text class="film-sign-imax" wx:if="{{filmItem.imax}}">IMAX</text>
+                <text class="film-sign-imax film-sign-imax-only" wx:elif='{{filmItem["imax"] && !filmItem["3d"]}}'>IMAX</text>
+                <text wx:else style="padding:0;border:none"></text>
+                <text class="film-sign-will" wx:if="{{filmItem.preSale == 1}}">点映</text>
+              </view>
+            </view> 
+            <text class="film-tags">{{filmItem.cat}}</text>
+            <text class="film-actors">主演:{{filmItem.star}}</text>
+            <text class="film-showInfo">{{filmItem.showInfo}}</text>
+          </view>
+          <!-- 右边部分 电影评分：预售显示想观看人数+购票 -->
+          <view class="film-right">
+              <block wx:if="{{filmItem.preSale == 1}}">
+                <text>{{filmItem.wish}}</text>人想看
+                <button wx:if="ticketBtn" class="ticket-btn ticket-btn-will" data-id="{{filmItem.id}}" catchtap="viewFilmTicket">预售</button>
+              </block>
+              <block wx:else>
+                <block wx:if="{{filmItem.sc !== 0}}">
+                <text>{{filmItem.sc}}</text>分
+                </block>
+                <text wx:else style="color: #9d9d9d;">暂无评分</text>
+                <button wx:if="ticketBtn" class="ticket-btn" data-id="{{filmItem.id}}" catchtap="viewFilmTicket">购票</button>
+              </block> 
+          </view> 
+      </view> 
+    </block>
+    <!-- 显示下拉加载时友好提示信息 -->
+    <block wx:if="{{hasNext}}">
+      <view class="bottomtip">加载更多</view>
+    </block>
+  </scroll-view>
+</template>
