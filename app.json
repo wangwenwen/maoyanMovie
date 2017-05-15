@@ -1,0 +1,50 @@
+{
+  "pages":[
+   
+    "pages/film/film",
+    
+    "pages/cinema/cinema",
+    "pages/cinemaDetail/cinemaDetail",
+    "pages/cinemaSeat/cinemaSeat",
+
+    "pages/filmDetail/filmDetail",
+    "pages/filmVideo/filmVideo",
+    "pages/filmScore/filmScore",
+
+    "pages/my/my",
+    "pages/my/myfilmOrder/myfilmOrder",
+    "pages/my/myfilmCoupon/myfilmCoupon",
+    "pages/my/myfilmSellcard/myfilmSellcard",
+    "pages/my/myfilmLove/myfilmLove",
+    "pages/my/myfilmSeen/myfilmSeen"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#eb4338",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "猫眼电影",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#eb4338",
+    "list": [{
+      "pagePath": "pages/film/film",
+      "text": "电影",
+      "iconPath": "images/film_icon.png",
+      "selectedIconPath": "images/film_active_icon.png"
+    },{
+      "pagePath": "pages/cinema/cinema",
+      "text": "影院",
+      "iconPath": "images/cinema_icon.png",
+      "selectedIconPath": "images/cinema_active_icon.png"
+    },{
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "images/my_icon.png",
+      "selectedIconPath": "images/my_active_icon.png"
+    }]
+  },
+  "debug": true
+  
+}
